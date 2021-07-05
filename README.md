@@ -1,4 +1,4 @@
-# jwt-auth-middleware
+# auth-middleware-jwt
 
 JWT authentication middleware for any nodejs API. Just install and import two object from package.
 
@@ -17,7 +17,7 @@ To have this a try copy this template and run your node application
 
 ```js
 const express = require('express');
-const { getToken, tokenValidation } = require('jwt-auth-middleware');
+const { getToken, tokenValidation } = require('auth-middleware-jwt');
 const app = express();
 const port = 3000 || process.env.PORT;
 
