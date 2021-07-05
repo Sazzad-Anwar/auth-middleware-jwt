@@ -3,10 +3,29 @@
     "version": "1.0.0",
     "description": "This package will be used for jsonwebtoken's middleware where the token generation and verification will be done by importing two objects from this package",
     "main": "index.js",
-    "repository": "https://github.com/Sazzad-Anwar/JWT-middleware.git",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Sazzad-Anwar/JWT-middleware.git"
+    },
     "author": "sazzad-anwar <sazzadzihan@gmail.com>",
     "license": "MIT",
     "dependencies": {
+        "jsonwebtoken": "^8.5.1",
         "yarn": "^1.22.10"
-    }
+    },
+    "bugs": {
+        "url": "https://github.com/Sazzad-Anwar/JWT-middleware/issues"
+    },
+    "homepage": "https://github.com/Sazzad-Anwar/JWT-middleware#readme",
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "JWT",
+        "authentication",
+        "API",
+        "nodejs",
+        "express"
+    ]
 }
