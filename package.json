@@ -1,0 +1,9 @@
+{
+    "name": "jwt-middleware",
+    "version": "1.0.0",
+    "description": "This package will be used for jsonwebtoken's middleware where the token generation and verification will be done by importing two objects from this package",
+    "main": "index.js",
+    "repository": "https://github.com/Sazzad-Anwar/JWT-middleware.git",
+    "author": "sazzad-anwar <sazzadzihan@gmail.com>",
+    "license": "MIT"
+}
