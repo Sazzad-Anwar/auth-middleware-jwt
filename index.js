@@ -30,7 +30,7 @@ const tokenValidation = (async (req, res, next) => {
             req.user = decoded;
             next()
         } else {
-            throw new Error("Token is undefined");
+            throw new Error("Authorization token not found");
         }
     } catch (err) {
         throw new Error(err);
