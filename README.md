@@ -9,7 +9,7 @@ npm i auth-middleware-jwt jsonwebtoken
 or
 
 ```sh
-yarn i auth-middleware-jwt jsonwebtoken
+yarn add auth-middleware-jwt jsonwebtoken
 ```
 
 Make a `.env` file of your project root and set two environment variables as shown below
