@@ -23,9 +23,10 @@ To have this a try copy this template and run your node application
 
 ```js
 const express = require('express');
-const { getToken, tokenValidation } = require('auth-middleware-jwt');
+const { getToken, tokenValidation } = require('./index');
 const app = express();
 const port = 3000 || process.env.PORT;
+require('dotenv').config();
 
 //make a get request to generate a token
 app.get('/', async (req, res) => {
@@ -39,16 +40,13 @@ app.get('/', async (req, res) => {
 });
 
 //JWT protected route
-app.post(
-    '/',
-    async(tokenValidation, (req, res) => {
-        if (req.user) {
-            res.json({ user: req.user });
-        } else {
-            res.json({ message: 'Authentication failed' });
-        }
-    })
-);
+app.post('/', tokenValidation, async (req, res) => {
+    if (req.user) {
+        res.json({ user: req.user });
+    } else {
+        res.json({ message: 'Authentication Failed' });
+    }
+});
 
 app.listen(port, () => console.log(`App is listening on ${port}`));
 ```
