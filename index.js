@@ -30,7 +30,7 @@ exports.tokenValidation = (async (req, res, next) => {
             req.user = decoded;
             next()
         } else {
-            throw new Error("Authorization token not found");
+            throw new Error("Authentication failed");
         }
     } catch (err) {
         throw new Error(err);

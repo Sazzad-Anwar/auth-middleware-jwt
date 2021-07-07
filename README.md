@@ -34,25 +34,37 @@ To have this a try copy this template and run your node application
 
 ```js
 const express = require('express');
+const dotenv = require('dotenv');
 const { getToken, tokenValidation } = require('auth-middleware-jwt');
 const app = express();
 const port = 3000 || process.env.PORT;
-require('dotenv').config();
+dotenv.config();
 
-//make a get request to generate a token
-app.get('/', async (req, res) => {
+//@Description: Route for a login auth route with user credentials
+//Route: http://localhost:3000
+//Method: POST
+//Set Login credentials in body as shown below
+// {
+//     name:'useer',
+//     email:'user@email.com',
+//     password:'password'
+// }
+app.post('/', async (req, res) => {
+    const { name, email, password } = req.body;
     let user = {
         id: '49afbf2a-0c08-4636-963c-1933507fb168',
-        name: 'user',
-        email: 'user@email.com',
+        name,
+        email,
         image: 'https://picsum.photos/100/100',
     };
     let token = await getToken(user);
     res.json({ token });
 });
 
-//JWT protected route
-app.post('/', tokenValidation, async (req, res) => {
+//@Description: Set the bearer token in header as key 'Authorization' and value 'Bearer <the token will be given after login>'
+//Route: http://localhost:3000/protected_route
+//Method: POST
+app.post('/protected_route', tokenValidation, async (req, res) => {
     if (req.user) {
         res.json({ user: req.user });
     } else {

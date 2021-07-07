@@ -1,6 +1,6 @@
 {
     "name": "auth-middleware-jwt",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "This package will be used for jsonwebtoken's middleware where the token generation and verification will be done by importing two objects from this package",
     "main": "index.js",
     "repository": {
