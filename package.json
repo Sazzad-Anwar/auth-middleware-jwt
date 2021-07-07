@@ -9,7 +9,9 @@
     },
     "author": "sazzad-anwar <sazzadzihan@gmail.com>",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "jsonwebtoken": "^8.5.1"
+    },
     "bugs": {
         "url": "https://github.com/Sazzad-Anwar/JWT-middleware/issues"
     },

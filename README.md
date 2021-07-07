@@ -1,6 +1,7 @@
 # auth-middleware-jwt
 
-<div style="display:flex;justify-content:space-between">
+<div style="display:flex;justify-content:start;">
+
 ![npm](https://img.shields.io/npm/v/auth-middleware-jwt)
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Sazzad-Anwar/auth-middleware-auth)
