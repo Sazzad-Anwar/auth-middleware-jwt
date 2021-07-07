@@ -23,7 +23,7 @@ To have this a try copy this template and run your node application
 
 ```js
 const express = require('express');
-const { getToken, tokenValidation } = require('./index');
+const { getToken, tokenValidation } = require('auth-middleware-jwt');
 const app = express();
 const port = 3000 || process.env.PORT;
 require('dotenv').config();
@@ -31,6 +31,7 @@ require('dotenv').config();
 //make a get request to generate a token
 app.get('/', async (req, res) => {
     let user = {
+        id: '49afbf2a-0c08-4636-963c-1933507fb168',
         name: 'user',
         email: 'user@email.com',
         image: 'https://picsum.photos/100/100',
