@@ -1,12 +1,24 @@
 # auth-middleware-jwt
 
-JWT authentication middleware for any nodejs API. Just install and import two object from package.
+<div style="display:flex;justify-content:space-between">
+![npm](https://img.shields.io/npm/v/auth-middleware-jwt)
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Sazzad-Anwar/auth-middleware-auth)
+
+![npm](https://img.shields.io/npm/dw/auth-middleware-jwt)
+![GitHub](https://img.shields.io/github/license/Sazzad-Anwar/auth-middleware-auth)
+
+</div>
+
+JWT authentication middleware for any nodejs API. Just install and import two objects from package as shown below.
+
+Install using npm
 
 ```sh
 npm i auth-middleware-jwt jsonwebtoken
 ```
 
-or
+Or using yarn
 
 ```sh
 yarn add auth-middleware-jwt jsonwebtoken
@@ -15,8 +27,8 @@ yarn add auth-middleware-jwt jsonwebtoken
 Make a `.env` file of your project root and set two environment variables as shown below
 
 ```sh
-TOKEN_EXPIRES_IN=
-SECRET_KEY=
+TOKEN_EXPIRES_IN=1h //modify as you need eg: 60s, 1m, 1h, 7d
+SECRET_KEY=my_secret_key //use your secret key
 ```
 
 To have this a try copy this template and run your node application

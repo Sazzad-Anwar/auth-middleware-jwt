@@ -5,7 +5,7 @@ exports.getToken = async (data) => {
     try {
         if (process.env.SECRET_KEY && process.env.TOKEN_EXPIRES_IN) {
             let token = await jwt.sign(data, process.env.SECRET_KEY, {
-                expiresIn: process.env.TOKEN_EXPIRES_IN,
+                expiresIn: `${process.env.TOKEN_EXPIRES_IN}`,
             });
             return token;
         } else {

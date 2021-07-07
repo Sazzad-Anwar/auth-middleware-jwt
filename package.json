@@ -9,10 +9,7 @@
     },
     "author": "sazzad-anwar <sazzadzihan@gmail.com>",
     "license": "MIT",
-    "dependencies": {
-        "jsonwebtoken": "^8.5.1",
-        "yarn": "^1.22.10"
-    },
+    "dependencies": {},
     "bugs": {
         "url": "https://github.com/Sazzad-Anwar/JWT-middleware/issues"
     },
@@ -22,7 +19,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
-        "JWT",
+        "auth-middleware-jwt",
+        "jwt",
         "authentication",
         "API",
         "nodejs",
