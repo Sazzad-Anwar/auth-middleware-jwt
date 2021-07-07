@@ -4,10 +4,8 @@
 
 ![npm](https://img.shields.io/npm/v/auth-middleware-jwt)
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Sazzad-Anwar/auth-middleware-jwt)
-
 ![npm](https://img.shields.io/npm/dw/auth-middleware-jwt)
-![GitHub](https://img.shields.io/github/license/Sazzad-Anwar/auth-middleware-auth)
+![GitHub](https://img.shields.io/github/license/Sazzad-Anwar/auth-middleware-jwt)
 
 </div>
 

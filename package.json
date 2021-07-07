@@ -5,7 +5,7 @@
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Sazzad-Anwar/JWT-middleware.git"
+        "url": "git+https://github.com/Sazzad-Anwar/auth-middleware-jwt.git"
     },
     "author": "sazzad-anwar <sazzadzihan@gmail.com>",
     "license": "MIT",
@@ -13,9 +13,9 @@
         "jsonwebtoken": "^8.5.1"
     },
     "bugs": {
-        "url": "https://github.com/Sazzad-Anwar/JWT-middleware/issues"
+        "url": "https://github.com/Sazzad-Anwar/auth-middleware-jwt/issues"
     },
-    "homepage": "https://github.com/Sazzad-Anwar/JWT-middleware#readme",
+    "homepage": "https://github.com/Sazzad-Anwar/auth-middleware-jwt#readme",
     "devDependencies": {},
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
