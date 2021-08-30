@@ -51,6 +51,9 @@ dotenv.config();
 // }
 app.post('/', async (req, res) => {
     const { name, email, password } = req.body;
+
+    //setup your authentication checking logics
+
     let user = {
         id: '49afbf2a-0c08-4636-963c-1933507fb168',
         name,
