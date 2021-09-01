@@ -22,9 +22,15 @@ exports.tokenValidation = asyncHandler(async (req, res, next) => {
     if (token) {
         const bearer = token.split(' ');
         const bearerToken = bearer[1];
-        var decoded = await jwt.verify(bearerToken, process.env.SECRET_KEY);
-        req.user = decoded;
-        next()
+        try {
+            var decoded = await jwt.verify(bearerToken, process.env.SECRET_KEY);
+            req.user = decoded;
+            next()
+        } catch (error) {
+            console.log(error);
+            res.status(401)
+            throw new Error("Request Not Allowed");
+        }
     }
     else {
         res.status(401)
