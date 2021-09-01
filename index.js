@@ -16,14 +16,18 @@ exports.getToken = asyncHandler(async (data) => {
 //Description: add this to a protected route which needs the authentication
 //eg: router.route('/:id').all(tokenValidation, authenticated_route)
 exports.tokenValidation = asyncHandler(async (req, res, next) => {
-    const { authorization } = req.headers;
-    if (typeof authorization !== 'undefined') {
-        const bearer = authorization.split(' ');
+
+    let token = req.headers.authorization ?? req.cookies.token
+
+    if (token) {
+        const bearer = token.split(' ');
         const bearerToken = bearer[1];
         var decoded = await jwt.verify(bearerToken, process.env.SECRET_KEY);
         req.user = decoded;
         next()
-    } else {
-        throw new Error("Authentication failed");
+    }
+    else {
+        res.status(401)
+        throw new Error("Request Not Allowed");
     }
 });
