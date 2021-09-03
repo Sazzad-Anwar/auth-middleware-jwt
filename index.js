@@ -3,25 +3,25 @@ const asyncHandler = require('express-async-handler')
 
 //Description: Generate an access token when login is successful
 exports.getAccessToken = asyncHandler(async (data) => {
-    if (process.env.SECRET_ACCESS_TOKEN_KEY && process.env.ACCESS_TOKEN_EXPIRES_IN) {
-        let token = await jwt.sign(data, process.env.SECRET_ACCESS_TOKEN_KEY, {
+    if (process.env.ACCESS_TOKEN_SECRET_KEY && process.env.ACCESS_TOKEN_EXPIRES_IN) {
+        let token = await jwt.sign(data, process.env.ACCESS_TOKEN_SECRET_KEY, {
             expiresIn: `${process.env.ACCESS_TOKEN_EXPIRES_IN}`,
         });
         return token;
     } else {
-        throw new Error('SECRET_ACCESS_TOKEN_KEY and  ACCESS_TOKEN_EXPIRES_IN is not found in your .env file');
+        throw new Error('ACCESS_TOKEN_SECRET_KEY and  ACCESS_TOKEN_EXPIRES_IN is not found in your .env file');
     }
 })
 
 //Description: Generate a refresh token when login is successful
 exports.getRefreshToken = asyncHandler(async (data) => {
-    if (process.env.SECRET_REFRESH_TOKEN_KEY && process.env.REFRESH_TOKEN_EXPIRES_IN) {
-        let token = await jwt.sign(data, process.env.SECRET_REFRESH_TOKEN_KEY, {
+    if (process.env.REFRESH_TOKEN_SECRET_KEY && process.env.REFRESH_TOKEN_EXPIRES_IN) {
+        let token = await jwt.sign(data, process.env.REFRESH_TOKEN_SECRET_KEY, {
             expiresIn: `${process.env.REFRESH_TOKEN_EXPIRES_IN}`,
         });
         return token;
     } else {
-        throw new Error('SECRET_REFRESH_TOKEN_KEY and  REFRESH_TOKEN_EXPIRES_IN is not found in your .env file');
+        throw new Error('REFRESH_TOKEN_SECRET_KEY and  REFRESH_TOKEN_EXPIRES_IN is not found in your .env file');
     }
 })
 
@@ -35,14 +35,16 @@ exports.AccessTokenValidation = asyncHandler(async (req, res, next) => {
         const bearer = token.split(' ');
         const bearerToken = bearer[1];
         try {
-            var decoded = await jwt.verify(bearerToken, process.env.SECRET_ACCESS_TOKEN_KEY);
+            var decoded = await jwt.verify(bearerToken, process.env.ACCESS_TOKEN_SECRET_KEY);
             req.user = decoded;
             next()
         } catch (error) {
+            res.status(401)
             throw new Error("Request Not Allowed");
         }
     }
     else {
+        res.status(401)
         throw new Error("Request Not Allowed");
     }
 });
@@ -53,15 +55,16 @@ exports.RefreshTokenValidation = asyncHandler(async (token) => {
 
     if (token) {
         try {
-
-            var decoded = await jwt.verify(token, process.env.SECRET_REFRESH_TOKEN_KEY);
+            var decoded = await jwt.verify(token, process.env.REFRESH_TOKEN_SECRET_KEY);
             return decoded;
 
         } catch (error) {
-            throw new Error("Invalid token");
+            res.status(401)
+            throw new Error("Request Not Allowed");
         }
     }
     else {
+        res.status(401)
         throw new Error("Request Not Allowed");
     }
 });
