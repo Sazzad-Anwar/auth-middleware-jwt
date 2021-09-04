@@ -122,7 +122,7 @@ app.post('/protected_route', AccessTokenValidation, async (req, res) => {
 });
 
 /*
-@Description: If the the access token is expired then use this route to renew access and refresh token by sending the refresh token in body parameters.
+@Description: If the the access token is expired then use this route to renew access and refresh token by sending the refresh token in header as refreshToken and value 'Bearer <the refresh token will be given after login or registration />'
 Route: http:localhost:3000/get-access-token
 Method: POST
 */
