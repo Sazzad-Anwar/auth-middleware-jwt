@@ -29,7 +29,7 @@ exports.getRefreshToken = asyncHandler(async (data) => {
 //Description: add this to a protected route which needs the authentication
 exports.AccessTokenValidation = asyncHandler(async (req, res, next) => {
 
-    let token = req.headers.authorization ?? req.cookies.accessToken
+    let token = req.headers.accessToken ?? req.cookies.accessToken
 
     if (token) {
         const bearer = token.split(' ');
