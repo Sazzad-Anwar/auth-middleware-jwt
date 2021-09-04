@@ -35,7 +35,7 @@ exports.AccessTokenValidation = asyncHandler(async (req, res, next) => {
         const bearer = token.split(' ');
         const bearerToken = bearer[1];
         try {
-            var decoded = await jwt.verify(bearerToken, process.env.ACCESS_TOKEN_SECRET_KEY);
+            let decoded = await jwt.verify(bearerToken, process.env.ACCESS_TOKEN_SECRET_KEY);
             req.user = decoded;
             next()
         } catch (error) {
@@ -51,21 +51,28 @@ exports.AccessTokenValidation = asyncHandler(async (req, res, next) => {
 
 
 //Description: add this to a protected route which needs the authentication
-exports.RefreshTokenValidation = asyncHandler(async (token) => {
+exports.RefreshTokenValidation = asyncHandler(async (req, res, next) => {
+
+    let token = req.headers.authorization ?? req.cookies.refreshToken;
 
     if (token) {
+        const bearer = token.split(' ');
+        const bearerToken = bearer[1];
         try {
-            var decoded = await jwt.verify(token, process.env.REFRESH_TOKEN_SECRET_KEY);
-            return decoded;
-
+            let decoded = await jwt.verify(bearerToken, process.env.REFRESH_TOKEN_SECRET_KEY);
+            req.user = {
+                id: decoded.user,
+                token: bearerToken
+            };
+            next()
         } catch (error) {
-            res.status(401)
+            console.log(error);
+            res.status(403)
             throw new Error("Request Not Allowed");
         }
     }
     else {
-        res.status(401)
+        res.status(403)
         throw new Error("Request Not Allowed");
     }
 });
-

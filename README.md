@@ -126,17 +126,15 @@ app.post('/protected_route', AccessTokenValidation, async (req, res) => {
 Route: http:localhost:3000/get-access-token
 Method: POST
 */
-app.post('/get-access-token', async (req, res) => {
-    const { token } = req.body; //set the refresh token on body parameters for this route
+app.post('/get-access-token', RefreshTokenValidation, async (req, res) => {
+    let { id, token } = req.user;
 
     if (refreshTokens.includes(token)) {
         try {
-            let data = await RefreshTokenValidation(token);
+            let accessToken = await getAccessToken(id);
+            let refreshToken = await getAccessToken({ user: id });
 
-            let accessToken = await getAccessToken(user);
-            let refreshToken = await getAccessToken({ user: user.id });
-
-            refreshTokens[data.user.id] = refreshToken;
+            refreshTokens[id] = refreshToken;
 
             res.json({
                 code: 200,
