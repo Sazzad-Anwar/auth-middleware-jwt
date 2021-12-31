@@ -29,7 +29,7 @@ exports.getRefreshToken = asyncHandler(async (data) => {
 //Description: add this to a protected route which needs the authentication
 exports.AccessTokenValidation = asyncHandler(async (req, res, next) => {
 
-    let token = req.headers.accesstoken ?? req.cookies.accessToken
+    let token = req.headers.authorization ?? req.cookies.accessToken
 
     if (token) {
         const bearer = token.split(' ');
@@ -53,7 +53,7 @@ exports.AccessTokenValidation = asyncHandler(async (req, res, next) => {
 //Description: add this to a protected route which needs the authentication
 exports.RefreshTokenValidation = asyncHandler(async (req, res, next) => {
 
-    let token = (req.headers.refreshtoken || req.headers.authorization) ?? req.cookies.refreshToken;
+    let token = (req.headers.refreshToken || req.headers.authorization) ?? req.cookies.refreshToken;
 
     if (token) {
         const bearer = token.split(' ');
